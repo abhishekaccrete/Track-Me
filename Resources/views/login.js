@@ -27,7 +27,18 @@ login.open = function(config)
 			login: txtUserName.value,
 			password: txtPassword.value
 		};
-		model.loginUser(config, userLoginInfo);
+		model.loginUser(config, userLoginInfo, function(e)
+		{
+			if (e.success) 
+			{
+				winLogin.close();
+				var user = e.users[0];
+				alert('Success:\n' +'id: ' + user.id + '\n' +'sessionId: ' + config.cloud.sessionId + '\n' +
+				'first name: ' + user.first_name + '\n' +'last name: ' + user.last_name);	
+			} 
+			else 
+				alert('Error:\n' +((e.error && e.message) || JSON.stringify(e)));
+		});
 	});
 	viewLogin.add(txtUserName);
 	viewLogin.add(txtPassword);

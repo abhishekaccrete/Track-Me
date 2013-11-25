@@ -44,7 +44,7 @@ mainView.getUserWindow = function(config)
 {
 	var paramsForUsersWin = UIParams.paramsForWin(config);
 	var viewUser = mainView.getViewForUserWin(config);
-	var winForUsersTab = UIComp.window(paramsForUsersWin);
+	winForUsersTab = UIComp.window(paramsForUsersWin);
 	winForUsersTab.add(viewUser);
 	winForUsersTab.title = 'Users';
 	return winForUsersTab;
