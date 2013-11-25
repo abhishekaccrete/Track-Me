@@ -43,10 +43,20 @@ mainView.getTrackWindow = function(config)
 mainView.getUserWindow = function(config)
 {
 	var paramsForUsersWin = UIParams.paramsForWin(config);
-	var viewUser = mainView.getViewForUserWin(config);
 	winForUsersTab = UIComp.window(paramsForUsersWin);
-	winForUsersTab.add(viewUser);
 	winForUsersTab.title = 'Users';
+	winForUsersTab.addEventListener('focus',function(e)
+	{
+		var userLog = dblayer.getUser(config);
+		config.userInfo = userLog;
+		if(userLog.rowCount > 0)
+			var viewUser = user.open(config,true);
+		else
+			var viewUser = user.open(config,false);
+		if(winForUsersTab.children.length > 0)
+			winForUsersTab.remove(winForUsersTab.children[0]);
+		winForUsersTab.add(viewUser);
+	});
 	return winForUsersTab;
 };
 

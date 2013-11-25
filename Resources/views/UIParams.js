@@ -73,3 +73,13 @@ UIParams.paramForButton = function(config)
 		height: Ti.UI.SIZE
 	};
 };
+
+UIParams.paramForLabel = function(config)
+{
+	return {
+		left: 10,
+		top: 5, 
+		width: Ti.UI.SIZE,
+		height: Ti.UI.SIZE
+	};
+};

@@ -31,7 +31,8 @@ login.open = function(config)
 		{
 			if (e.success) 
 			{
-				winLogin.close();
+				if(dblayer.loginUser(config, e.users[0]))
+					winLogin.close();
 				var user = e.users[0];
 				alert('Success:\n' +'id: ' + user.id + '\n' +'sessionId: ' + config.cloud.sessionId + '\n' +
 				'first name: ' + user.first_name + '\n' +'last name: ' + user.last_name);	

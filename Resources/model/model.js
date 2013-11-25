@@ -8,7 +8,6 @@ model.createUser = function(config, userInfo, callBack)
 	});
 };
 
-
 model.loginUser = function(config, userInfo, callBack)
 {
 	var user = config.cloud.Users.login(userInfo, function(e)

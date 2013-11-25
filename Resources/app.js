@@ -7,11 +7,13 @@ config =
 	viewPath: Ti.Filesystem.resourcesDirectory+'views/',
 	modelPath: Ti.Filesystem.resourcesDirectory+'model/',
 	imgPath: Ti.Filesystem.resourcesDirectory+'images/',
-	cloud: require('ti.cloud')
+	cloud: require('ti.cloud'),
+	dbPath: Ti.Filesystem.resourcesDirectory+'track_me.db'
 };
 
 try
 {
+	config.db = Ti.Database.install(config.dbPath,'Tracking');
 	Ti.Geolocation.purpose = 'Positioning';
 	if(!Ti.Geolocation.locationServicesEnabled)
 	{
@@ -40,8 +42,8 @@ try
 		Ti.include(config.viewPath+'registerView.js');
 		Ti.include(config.viewPath+'user.js');
 		Ti.include(config.viewPath+'login.js');
-
-		Titanium.include(config.viewPath+'mainView.js');
+		Ti.include(config.viewPath+'mainView.js');
+		Ti.include(config.modelPath+'dblayer.js');
 		mainView.open(config);
 	}
 }
