@@ -20,7 +20,10 @@ UIParams.paramsForTabUsers = function(config)
 UIParams.paramsForWin = function(config)
 {
 	return {
-		backgroundColor: 'white'	
+		backgroundColor: 'white',
+		exitOnClose: false,
+		fullscreen: false,
+		height: Ti.UI.FILL
 	};
 };
 
@@ -31,7 +34,7 @@ UIParams.paramForParentView = function(config)
 		top: 0,
 		width: Ti.UI.FILL,
 		height: Ti.UI.FILL,
-		backgroundColor: 'white',
+		backgroundColor: 'gray',
 		layout: 'vertical'
 	};
 };
@@ -43,8 +46,10 @@ UIParams.paramForTxtFld = function(config)
 		top: 5,
 		width: '80%',
 		height: Ti.UI.SIZE,
+		borderStyle: Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
 		borderRadius: '5px',
-		borderColor: 'black'
+		borderWidth: '2px',
+		backgroundColor: 'white'
 	};
 };
 

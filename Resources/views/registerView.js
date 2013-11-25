@@ -8,6 +8,17 @@ registerView.open = function(config)
 {
 	var paramWin = UIParams.paramsForWin(config);
 	var winRegister = UIComp.window(paramWin);
+	winRegister.addEventListener('open',function(e)
+    {
+    	if(config.osname == 'android' && Ti.Platform.Android.API_LEVEL >10)
+    	{
+    		winRegister.getActivity().actionBar['displayHomeAsUp'] = true;
+    		winRegister.getActivity().actionBar.onHomeIconItemSelected = function(e)
+    		{
+    			winRegister.close();
+    		};
+    	}
+    });
 	winRegister.title = 'Register New User';
 	var paramViewRegister = UIParams.paramForParentView(config);
 	var viewRegister = UIComp.view(paramViewRegister);
