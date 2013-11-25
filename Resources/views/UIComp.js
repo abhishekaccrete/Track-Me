@@ -43,12 +43,7 @@ UIComp.tab = function(tbParams)
 
 UIComp.textField = function(txtFldParams)
 {
-	var txt = Ti.UI.createTextField(txtFldParams);
-	if(config.osname == 'android')
-	{
-		txt.softKeyboardOnFocus =  Ti.UI.Android.SOFT_KEYBOARD_HIDE_ON_FOCUS;
-	}
-	return txt;
+	return Ti.UI.createTextField(txtFldParams);;
 };
 
 UIComp.tableView = function(tblData)

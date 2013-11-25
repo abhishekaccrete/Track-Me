@@ -8,6 +8,7 @@ registerView.open = function(config)
 {
 	var paramWin = UIParams.paramsForWin(config);
 	var winRegister = UIComp.window(paramWin);
+	
 	winRegister.addEventListener('open',function(e)
     {
     	if(config.osname == 'android' && Ti.Platform.Android.API_LEVEL >10)
@@ -19,42 +20,37 @@ registerView.open = function(config)
     		};
     	}
     });
+    
 	winRegister.title = 'Register New User';
 	var paramViewRegister = UIParams.paramForParentView(config);
 	var viewRegister = UIComp.view(paramViewRegister);
 	
 	//Email
-	var paramTxtFldEmail = UIParams.paramForTxtFld(config);
-	paramTxtFldEmail.hintText = "E-mail";
+	var paramTxtFldEmail = UIParams.paramForTxtFldEmail(config);
 	var txtFldEmail = UIComp.textField(paramTxtFldEmail);
-	txtFldEmail.keyboardType = Ti.UI.KEYBOARD_EMAIL;
 	
 	//User name
-	var paramTxtFldUserName = UIParams.paramForTxtFld(config);
-	paramTxtFldUserName.hintText = "User Name";
+	var paramTxtFldUserName = UIParams.paramForTxtFldUserName(config);
 	var txtFldUserName = UIComp.textField(paramTxtFldUserName);
 
 	//Password
-	var paramTxtFldPwd = UIParams.paramForTxtFld(config);
-	paramTxtFldPwd.hintText = "Password";
+	var paramTxtFldPwd = UIParams.paramForTxtFldPassword(config);
 	var txtFldPwd = UIComp.textField(paramTxtFldPwd);
-	txtFldPwd.passwordMask = true;
+	
 	
 	//confirm password
-	var paramTxtFldConfPwd = UIParams.paramForTxtFld(config);
-	paramTxtFldConfPwd.hintText = "Confirm Password";
+	var paramTxtFldConfPwd = UIParams.paramForTxtFldConfirmPassword(config);
 	var txtFldConfPwd = UIComp.textField(paramTxtFldConfPwd);
-	txtFldConfPwd.passwordMask = true;
+	
 	
 	//first name
-	var paramTxtFldFirstName = UIParams.paramForTxtFld(config);
-	paramTxtFldFirstName.hintText = "First Name";
+	var paramTxtFldFirstName = UIParams.paramForTxtFldFirstName(config);
 	var txtFldFirstName = UIComp.textField(paramTxtFldFirstName);
 	
 	//last name
-	var paramTxtFldLastName = UIParams.paramForTxtFld(config);
-	paramTxtFldLastName.hintText = "First Name";
+	var paramTxtFldLastName = UIParams.paramForTxtFldLastName(config);
 	var txtFldLastName = UIComp.textField(paramTxtFldLastName);
+	
 
 	var paramForBtnCreateUser = UIParams.paramForCreateUserButton(config);
 	var btnCreateUser = UIComp.button(paramForBtnCreateUser);
@@ -72,7 +68,19 @@ registerView.open = function(config)
 		};
 		try
 		{
-			model.createUser(config, userInfo);
+			model.createUser(config, userInfo, function(e)
+			{
+				if (e.success) 
+				{
+					if(dblayer.loginUser(config, e.users[0]))
+						winRegister.close();
+					var user = e.users[0];
+					alert('Success:\n' +'id: ' + user.id + '\n' +'sessionId: ' + config.cloud.sessionId + '\n' +
+					'first name: ' + user.first_name + '\n' +'last name: ' + user.last_name);
+				} 
+				else 
+					alert('Error:\n' +((e.error && e.message) || JSON.stringify(e)));
+			});
 		}
 		catch(e)
 		{
@@ -87,6 +95,7 @@ registerView.open = function(config)
 	viewRegister.add(txtFldFirstName);
 	viewRegister.add(txtFldLastName);
 	viewRegister.add(btnCreateUser);
+	
 	winRegister.add(viewRegister);
 	return winRegister;
 

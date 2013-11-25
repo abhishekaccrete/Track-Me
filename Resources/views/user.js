@@ -52,7 +52,10 @@ user.loggedInView = function(config)
 	var paramBtnLogout = UIParams.paramForButton(config);
 	paramBtnLogout.title = 'Logout';
 	var btnLogout = UIComp.button(paramBtnLogout);
-	
+	btnLogout.addEventListener('click',function(e)
+	{
+		
+	});
 	viewUserParent.add(lblUserName);
 	viewUserParent.add(lblFirstName);
 	viewUserParent.add(lblLastName);
