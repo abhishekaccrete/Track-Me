@@ -8,6 +8,7 @@ registerView.open = function(config)
 {
 	var paramWin = UIParams.paramsForWin(config);
 	var winRegister = UIComp.window(paramWin);
+	winRegister.title = 'Register New User';
 	var paramViewRegister = UIParams.paramForParentView(config);
 	var viewRegister = UIComp.view(paramViewRegister);
 	
@@ -76,6 +77,6 @@ registerView.open = function(config)
 	viewRegister.add(txtFldLastName);
 	viewRegister.add(btnCreateUser);
 	winRegister.add(viewRegister);
-	winRegister.open();
+	return winRegister;
 
 };

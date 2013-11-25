@@ -1,1 +1,5 @@
-Place your change log text here.  This file will be incorporated with your app at package time.
+/**************************
+ * Login to Appcelerator Cloud Services using
+ Username: abhisheksharma.dsc@gmail.com
+ Password: mr15!%bond
+ */

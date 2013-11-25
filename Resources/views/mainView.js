@@ -9,8 +9,8 @@ mainView.open = function(config)
 mainView.mainWin = function(config)
 {
 	var tabGroup = UIComp.tabGroup();
-	var tabTrack = mainView.getTrackTab(config);
-	var tabUsers = mainView.getUserTab(config);
+	tabTrack = mainView.getTrackTab(config);
+	tabUsers = mainView.getUserTab(config);
 	tabGroup.addTab(tabTrack);
 	tabGroup.addTab(tabUsers);
 	tabGroup.open();
@@ -52,26 +52,5 @@ mainView.getUserWindow = function(config)
 
 mainView.getViewForUserWin = function(config)
 {
-	var paramBtnRegister = UIParams.paramForButton(config);
-	var btnRegister = UIComp.button(paramBtnRegister);
-	btnRegister.title = 'Register';
-	btnRegister.addEventListner('click',function(e)
-	{
-		
-	});
-	
-	var paramBtnLogin = UIParams.paramForButton(config);
-	var btnLogin = UIComp.button(paramBtnLogin);
-	btnLogin = 'Login';
-	
-	var viewParams = UIParams.paramForParentView(config);
-	var viewParent = UIComp.view(viewParams);
-	
-	viewParent.add(btnRegister);
-	viewParent.add(btnLogin);
-	
-	
-	/*
-	*/
-	return viewParent;
+	return user.open(config, false);
 };

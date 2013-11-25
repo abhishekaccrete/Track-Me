@@ -37,6 +37,9 @@ try
 		Ti.include(config.viewPath+'UIComp.js');
 		Ti.include(config.viewPath+'UIParams.js');
 		Ti.include(config.modelPath+'model.js');
+		Ti.include(config.viewPath+'registerView.js');
+		Ti.include(config.viewPath+'user.js');
+		Ti.include(config.viewPath+'login.js');
 
 		Titanium.include(config.viewPath+'mainView.js');
 		mainView.open(config);
