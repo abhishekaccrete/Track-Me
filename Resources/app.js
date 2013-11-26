@@ -8,6 +8,7 @@ config =
 	modelPath: Ti.Filesystem.resourcesDirectory+'model/',
 	imgPath: Ti.Filesystem.resourcesDirectory+'images/',
 	cloud: require('ti.cloud'),
+	fb: require('facebook'),
 	dbPath: Ti.Filesystem.resourcesDirectory+'track_me.db'
 };
 

@@ -169,3 +169,13 @@ UIParams.paramForLabel = function(config)
 		height: Ti.UI.SIZE
 	};
 };
+
+UIParams.paramAlertDialogLogOut = function(config)
+{
+	return {
+		cancel: 1,
+    	buttonNames: ['Yes', 'No'],
+    	message: 'Are you sure you want to log out?',
+    	title: 'Log out'
+	};
+};

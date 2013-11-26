@@ -27,3 +27,9 @@ dblayer.getUser = function(config)
 		return -1;
 	}
 };
+
+dblayer.logoutUser = function(config)
+{
+	var sSql = 'Delete from user';
+	config.db.execute(sSql);
+};

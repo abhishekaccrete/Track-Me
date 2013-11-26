@@ -54,7 +54,25 @@ user.loggedInView = function(config)
 	var btnLogout = UIComp.button(paramBtnLogout);
 	btnLogout.addEventListener('click',function(e)
 	{
-		
+		var paramAlertDlg = UIParams.paramAlertDialogLogOut(config);
+		var alertDialog = UIComp.alertDialog(paramAlertDlg);
+		alertDialog.show();
+		alertDialog.addEventListener('click',function(e)
+		{
+			if(e.index == 0)
+			{
+				config.cloud.Users.logout(function(e)
+				{
+					if(e.success)
+					{
+						dblayer.logoutUser(config);
+						if(winForUsersTab.children.length > 0)
+							winForUsersTab.remove(winForUsersTab.children[0]);
+						winForUsersTab.add(user.open(config, false));
+					}
+				});
+			}
+		});
 	});
 	viewUserParent.add(lblUserName);
 	viewUserParent.add(lblFirstName);
