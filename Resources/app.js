@@ -8,7 +8,7 @@ config =
 	modelPath: Ti.Filesystem.resourcesDirectory+'model/',
 	imgPath: Ti.Filesystem.resourcesDirectory+'images/',
 	cloud: require('ti.cloud'),
-	fb: require('facebook'),
+	//fb: require('facebook'),
 	dbPath: Ti.Filesystem.resourcesDirectory+'track_me.db'
 };
 
@@ -23,6 +23,15 @@ try
 	}
 	else
 	{
+		Ti.include(config.viewPath+'UIComp.js');
+		Ti.include(config.viewPath+'UIParams.js');
+		Ti.include(config.modelPath+'model.js');
+		Ti.include(config.viewPath+'registerView.js');
+		Ti.include(config.viewPath+'user.js');
+		Ti.include(config.viewPath+'login.js');
+		Ti.include(config.viewPath+'mainView.js');
+		Ti.include(config.modelPath+'dblayer.js');
+		Ti.include(config.viewPath+'trackView.js');
 		Ti.Geolocation.getCurrentPosition(function(e)
 		{
 			if (e.error)
@@ -37,15 +46,6 @@ try
 				config.lon = e.coords.longitude;
 			}
 		});
-		Ti.include(config.viewPath+'UIComp.js');
-		Ti.include(config.viewPath+'UIParams.js');
-		Ti.include(config.modelPath+'model.js');
-		Ti.include(config.viewPath+'registerView.js');
-		Ti.include(config.viewPath+'user.js');
-		Ti.include(config.viewPath+'login.js');
-		Ti.include(config.viewPath+'mainView.js');
-		Ti.include(config.modelPath+'dblayer.js');
-		Ti.include(config.viewPath+'trackView.js');
 		mainView.open(config);
 	}
 }

@@ -35,19 +35,32 @@ trackView.getParentView = function(config)
 	viewBottom.add(btnStartTracking);
 	viewBottom.add(btnStopTracking);
 	
-	var intent = Titanium.Android.createServiceIntent( { url: 'locationService.js' } );
-	// Service should run its code every 2 seconds.
-	intent.putExtra('interval', 2000);
-	intent.putExtra('message_to_echo', 'Titanium rocks!');		
-	var service = Titanium.Android.createService(intent);
+	
 
 	btnStartTracking.addEventListener('click',function(e)
 	{
-		service.start();
+		try
+		{
+			var intent = Titanium.Android.createServiceIntent( { url: 'locationService.js' } );
+			// Service should run its code every 2 seconds.
+			intent.putExtra('interval', 2000);
+			intent.putExtra('message_to_echo', 'Titanium rocks!');		
+			var service = Titanium.Android.createService(intent);
+			service.start();
+		}
+		catch(e)
+		{
+			alert(e);
+		}
 	});
 	btnStopTracking.addEventListener('click',function(e)
 	{
-		service.stop();
+		var intent = Ti.Android.createServiceIntent(
+		{
+			url : URL
+		});
+		Ti.Android.stopService(intent);
+		//service.stop();
 	});
 	return parentView;
 };

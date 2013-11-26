@@ -14,6 +14,7 @@ registerView.open = function(config)
     	if(config.osname == 'android' && Ti.Platform.Android.API_LEVEL >10)
     	{
     		winRegister.getActivity().actionBar['displayHomeAsUp'] = true;
+    		winRegister.getActivity().actionBar['backgroundImage'] = config.resPath+'images/wood.png';
     		winRegister.getActivity().actionBar.onHomeIconItemSelected = function(e)
     		{
     			winRegister.close();

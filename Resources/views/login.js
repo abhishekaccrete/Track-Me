@@ -52,6 +52,7 @@ login.open = function(config)
     	if(config.osname == 'android' && Ti.Platform.Android.API_LEVEL >10)
     	{
     		winLogin.getActivity().actionBar['displayHomeAsUp'] = true;
+    		winLogin.getActivity().actionBar['backgroundImage'] = config.resPath+'images/wood.png';
     		winLogin.getActivity().actionBar.onHomeIconItemSelected = function(e)
     		{winLogin.close();};
     	}

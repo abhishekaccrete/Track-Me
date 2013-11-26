@@ -7,6 +7,18 @@ if(config.osname == 'android')
 	var intent = service.intent;
 	var message = intent.getStringExtra("message_to_echo");
 	Titanium.API.info("Hello World!  I am a Service.  I have this to say: " + message);
+	Ti.Geolocation.getCurrentPosition(function(e)
+	{
+		if (e.error)
+		{
+			//log error
+		}
+		else
+		{
+			//Latitude: e.coords.latitude;
+			//Longitude: e.coords.longitude;
+		}
+	});
 }
 else
 {

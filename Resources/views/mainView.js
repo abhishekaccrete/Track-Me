@@ -13,6 +13,13 @@ mainView.mainWin = function(config)
 	tabGroup.addTab(tabTrack);
 	tabGroup.addTab(tabUsers);
 	tabGroup.open();
+	if(config.osname == 'android' && Ti.Platform.Android.API_LEVEL > 10)
+	{
+		tabGroup.addEventListener('open',function(e)
+		{
+			tabGroup.getActivity().actionBar['backgroundImage'] = config.resPath+'images/wood.png';
+		});
+	}
 };
 
 mainView.getTrackTab = function(config)
