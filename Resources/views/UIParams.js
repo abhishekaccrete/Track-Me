@@ -179,3 +179,52 @@ UIParams.paramAlertDialogLogOut = function(config)
     	title: 'Log out'
 	};
 };
+
+UIParams.paramForMapView = function(config)
+{
+	return {
+		left: 0,
+		top: 0,
+		width: Ti.UI.FILL,
+		height: '80%',
+		userLocation: true,
+		regionFit: true,
+		mapType: Titanium.Map.STANDARD_TYPE
+	};
+};
+
+UIParams.paramForBtnStartTracking = function(config)
+{
+	return {
+		left: 0,
+		top: 0,
+		width: '50%',
+		height: Ti.UI.FILL,
+		title: 'Start Tracking'
+	};
+};
+
+UIParams.paramForBtnStopTracking = function(config)
+{
+	return {
+		left: '50%',
+		top: 0,
+		width: Ti.UI.FILL,
+		height: Ti.UI.FILL,
+		title: 'Stop Tracking'
+	};
+
+};
+
+UIParams.paramForBottomView = function(config)
+{
+	return {
+		left: 0,
+		top: 0,
+		width: Ti.UI.FILL,
+		height: Ti.UI.FILL,
+		backgroundColor: 'black',
+		borderRadius: '2px',
+		borderColor: 'white'
+	};
+};

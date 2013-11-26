@@ -27,6 +27,7 @@ user.loggedOutView = function(config)
 		tabUsers.open(login.open(config));
 	});
 	
+	//var paramBtnFBLogin = UIParams.paramForButton(config);	
 	var viewParams = UIParams.paramForParentView(config);
 	var viewParent = UIComp.view(viewParams);	
 	viewParent.add(btnRegister);

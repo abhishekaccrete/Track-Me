@@ -45,6 +45,7 @@ try
 		Ti.include(config.viewPath+'login.js');
 		Ti.include(config.viewPath+'mainView.js');
 		Ti.include(config.modelPath+'dblayer.js');
+		Ti.include(config.viewPath+'trackView.js');
 		mainView.open(config);
 	}
 }

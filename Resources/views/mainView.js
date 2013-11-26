@@ -1,4 +1,3 @@
-//a152285395a2456
 mainView = {};
 
 mainView.open = function(config)
@@ -34,10 +33,7 @@ mainView.getUserTab = function(config)
 
 mainView.getTrackWindow = function(config)
 {
-	var paramsForTrackWin = UIParams.paramsForWin(config);
-	var winForTrackTab = UIComp.window(paramsForTrackWin);
-	winForTrackTab.title = 'Track';
-	return winForTrackTab;
+	return trackView.open(config);
 };
 
 mainView.getUserWindow = function(config)
