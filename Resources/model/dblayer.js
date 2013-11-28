@@ -36,5 +36,5 @@ dblayer.logoutUser = function(config)
 
 dblayer.newTrackSession = function(config)
 {
-	var sSql = 'Insert into track_sessions'
-}
+	var sSql = 'Insert into track_sessions';
+};

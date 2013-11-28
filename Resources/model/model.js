@@ -34,4 +34,4 @@ Date.prototype.timeNow = function()
 model.createTrackSession = function(config)
 {
 	
-}
+};
