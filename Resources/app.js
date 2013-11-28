@@ -8,7 +8,6 @@ config =
 	modelPath: Ti.Filesystem.resourcesDirectory+'model/',
 	imgPath: Ti.Filesystem.resourcesDirectory+'images/',
 	cloud: require('ti.cloud'),
-	//fb: require('facebook'),
 	dbPath: Ti.Filesystem.resourcesDirectory+'track_me.db'
 };
 
@@ -32,6 +31,7 @@ try
 		Ti.include(config.viewPath+'mainView.js');
 		Ti.include(config.modelPath+'dblayer.js');
 		Ti.include(config.viewPath+'trackView.js');
+		Ti.include(config.viewPath+'myTracksView.js');
 		Ti.Geolocation.getCurrentPosition(function(e)
 		{
 			if (e.error)

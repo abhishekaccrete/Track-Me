@@ -17,6 +17,13 @@ UIParams.paramsForTabUsers = function(config)
 	};
 };
 
+UIParams.paramsForTabMyTrack = function(config)
+{
+	return {
+		title: 'My Tracks'
+	};
+};
+
 UIParams.paramsForWin = function(config)
 {
 	return {

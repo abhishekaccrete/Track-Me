@@ -33,3 +33,8 @@ dblayer.logoutUser = function(config)
 	var sSql = 'Delete from user';
 	config.db.execute(sSql);
 };
+
+dblayer.newTrackSession = function(config)
+{
+	var sSql = 'Insert into track_sessions'
+}

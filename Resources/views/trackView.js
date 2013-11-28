@@ -57,10 +57,9 @@ trackView.getParentView = function(config)
 	{
 		var intent = Ti.Android.createServiceIntent(
 		{
-			url : URL
+			url : 'locationService.js'
 		});
 		Ti.Android.stopService(intent);
-		//service.stop();
 	});
 	return parentView;
 };

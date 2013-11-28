@@ -9,14 +9,19 @@ if(config.osname == 'android')
 	Titanium.API.info("Hello World!  I am a Service.  I have this to say: " + message);
 	Ti.Geolocation.getCurrentPosition(function(e)
 	{
-		if (e.error)
+		var newDate = new Date();
+		var datetime = "LastSync: " + newDate.today() + " @ " + newDate.timeNow();
+		try	
 		{
-			//log error
+			if (e.error)
+				config.db.execute('Insert into error_log (log_date_time,log_error) values ("'+datetime+'","'+e.error+'")');
+			else
+				config.db.execute('Insert into track(latitude, longitude, log_date_time) values ("'+e.coords.latitude+'","'
+				+e.coords.longitude+'","'+datetime+'")');
 		}
-		else
+		catch(e)
 		{
-			//Latitude: e.coords.latitude;
-			//Longitude: e.coords.longitude;
+			config.db.execute('Insert into error_log (log_date_time,log_error) values ("'+datetime+'","SQL Error")');			
 		}
 	});
 }
